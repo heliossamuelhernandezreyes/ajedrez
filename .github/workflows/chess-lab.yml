@@ -95,7 +95,7 @@ jobs:
             --scan-depth "${{ steps.select.outputs.scan_depth }}" \
             --depth "${{ steps.select.outputs.depth }}" \
             --multipv 3 \
-            --verify-threshold 50 \
+            --verify-threshold 40 \
             --stockfish "$STOCKFISH_PATH" \
             --outdir analysis
 
