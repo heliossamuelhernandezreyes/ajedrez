@@ -1,0 +1,75 @@
+name: Chess Lab — Stockfish
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'games/**/*.pgn'
+      - 'analyze.py'
+      - 'requirements.txt'
+      - '.github/workflows/chess-lab.yml'
+  workflow_dispatch:
+    inputs:
+      pgn:
+        description: 'PGN path, e.g. games/current.pgn'
+        required: true
+        default: 'games/2026-08-28-smith-morra.pgn'
+      depth:
+        description: 'Stockfish depth'
+        required: false
+        default: '20'
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Stockfish and Python dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y stockfish
+          pip install -r requirements.txt
+      - name: Select PGN
+        id: select
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            PGN="${{ inputs.pgn }}"
+            DEPTH="${{ inputs.depth }}"
+          else
+            PGN=$(find games -name '*.pgn' -type f | sort | tail -n 1)
+            DEPTH=20
+          fi
+          test -n "$PGN"
+          test -f "$PGN"
+          echo "pgn=$PGN" >> "$GITHUB_OUTPUT"
+          echo "depth=$DEPTH" >> "$GITHUB_OUTPUT"
+      - name: Analyze with Stockfish
+        env:
+          STOCKFISH_PATH: /usr/games/stockfish
+        run: |
+          python analyze.py "${{ steps.select.outputs.pgn }}" \
+            --depth "${{ steps.select.outputs.depth }}" \
+            --multipv 3 \
+            --outdir analysis
+      - name: Commit analysis
+        run: |
+          git config user.name 'chess-lab-bot'
+          git config user.email 'chess-lab-bot@users.noreply.github.com'
+          git add analysis
+          if git diff --cached --quiet; then
+            echo 'No analysis changes.'
+          else
+            git commit -m 'Analyze PGN with Stockfish'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
