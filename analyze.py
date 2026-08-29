@@ -53,7 +53,7 @@ def main():
     ap.add_argument("--depth", type=int, default=20, help="Deep verification depth")
     ap.add_argument("--scan-depth", type=int, default=14, help="Fast first-pass depth")
     ap.add_argument("--multipv", type=int, default=3)
-    ap.add_argument("--verify-threshold", type=int, default=50,
+    ap.add_argument("--verify-threshold", type=int, default=40,
                     help="Deep-verify moves whose scan CPL reaches this value")
     ap.add_argument("--stockfish", default=os.environ.get("STOCKFISH_PATH", "/usr/games/stockfish"))
     ap.add_argument("--outdir", default="analysis")
@@ -112,9 +112,10 @@ def main():
             scan_played_cp = score_cp(scan_after["score"], mover)
             scan_loss = max(0, scan_best_cp - scan_played_cp)
 
-            # Verify anything close to our first classification threshold.
-            # This keeps ordinary moves cheap while mistakes/blunders still get
-            # the full depth-20 + MultiPV treatment used by the original lab.
+            # Verify anything reasonably close to our first classification
+            # threshold so subtle inaccuracies are less likely to be missed.
+            # Ordinary moves stay cheap while critical moves get the full
+            # depth-20 + MultiPV treatment used by the original lab.
             deep_verify = scan_loss >= args.verify_threshold
 
             if deep_verify:
