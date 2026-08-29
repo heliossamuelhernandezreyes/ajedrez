@@ -15,9 +15,13 @@ on:
         required: true
         default: 'games/2026-08-28-smith-morra.pgn'
       depth:
-        description: 'Stockfish depth'
+        description: 'Critical-position Stockfish depth'
         required: false
         default: '20'
+      scan_depth:
+        description: 'Fast first-pass Stockfish depth'
+        required: false
+        default: '14'
 
 permissions:
   contents: write
@@ -73,20 +77,25 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             PGN="${{ inputs.pgn }}"
             DEPTH="${{ inputs.depth }}"
+            SCAN_DEPTH="${{ inputs.scan_depth }}"
           else
             PGN=$(find games -name '*.pgn' -type f | sort | tail -n 1)
             DEPTH=20
+            SCAN_DEPTH=14
           fi
           test -n "$PGN"
           test -f "$PGN"
           echo "pgn=$PGN" >> "$GITHUB_OUTPUT"
           echo "depth=$DEPTH" >> "$GITHUB_OUTPUT"
+          echo "scan_depth=$SCAN_DEPTH" >> "$GITHUB_OUTPUT"
 
       - name: Analyze with Stockfish 18 NNUE
         run: |
           python analyze.py "${{ steps.select.outputs.pgn }}" \
+            --scan-depth "${{ steps.select.outputs.scan_depth }}" \
             --depth "${{ steps.select.outputs.depth }}" \
             --multipv 3 \
+            --verify-threshold 50 \
             --stockfish "$STOCKFISH_PATH" \
             --outdir analysis
 
