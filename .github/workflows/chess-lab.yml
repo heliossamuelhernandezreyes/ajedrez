@@ -1,4 +1,4 @@
-name: Chess Lab — Stockfish
+name: Chess Lab — Stockfish 18 NNUE
 
 on:
   push:
@@ -22,6 +22,11 @@ on:
 permissions:
   contents: write
 
+env:
+  STOCKFISH_VERSION: '18'
+  STOCKFISH_ARCHIVE: 'stockfish-ubuntu-x86-64-avx2.tar'
+  STOCKFISH_SHA256: '536c0c2c0cf06450df0bfb5e876ef0d3119950703a8f143627f990c7b5417964'
+
 jobs:
   analyze:
     runs-on: ubuntu-latest
@@ -30,14 +35,37 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install Stockfish and Python dependencies
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install official Stockfish 18 NNUE
+        shell: bash
         run: |
-          sudo apt-get update
-          sudo apt-get install -y stockfish
-          pip install -r requirements.txt
+          set -euo pipefail
+          URL="https://github.com/official-stockfish/Stockfish/releases/download/sf_18/${STOCKFISH_ARCHIVE}"
+          ARCHIVE="$RUNNER_TEMP/${STOCKFISH_ARCHIVE}"
+          DEST="$RUNNER_TEMP/stockfish18"
+
+          curl -L --fail --retry 3 "$URL" -o "$ARCHIVE"
+          echo "${STOCKFISH_SHA256}  ${ARCHIVE}" | sha256sum -c -
+
+          mkdir -p "$DEST"
+          tar -xf "$ARCHIVE" -C "$DEST"
+
+          STOCKFISH_BIN=$(find "$DEST" -type f -name 'stockfish*' ! -name '*.tar' | head -n 1)
+          test -n "$STOCKFISH_BIN"
+          chmod +x "$STOCKFISH_BIN"
+          echo "STOCKFISH_PATH=$STOCKFISH_BIN" >> "$GITHUB_ENV"
+
+          VERSION_OUTPUT=$(printf 'uci\nquit\n' | "$STOCKFISH_BIN" | head -n 8)
+          echo "$VERSION_OUTPUT"
+          echo "$VERSION_OUTPUT" | grep -q 'Stockfish 18'
+
       - name: Select PGN
         id: select
         shell: bash
@@ -53,14 +81,15 @@ jobs:
           test -f "$PGN"
           echo "pgn=$PGN" >> "$GITHUB_OUTPUT"
           echo "depth=$DEPTH" >> "$GITHUB_OUTPUT"
-      - name: Analyze with Stockfish
-        env:
-          STOCKFISH_PATH: /usr/games/stockfish
+
+      - name: Analyze with Stockfish 18 NNUE
         run: |
           python analyze.py "${{ steps.select.outputs.pgn }}" \
             --depth "${{ steps.select.outputs.depth }}" \
             --multipv 3 \
+            --stockfish "$STOCKFISH_PATH" \
             --outdir analysis
+
       - name: Commit analysis
         run: |
           git config user.name 'chess-lab-bot'
@@ -69,7 +98,7 @@ jobs:
           if git diff --cached --quiet; then
             echo 'No analysis changes.'
           else
-            git commit -m 'Analyze PGN with Stockfish'
+            git commit -m 'Analyze PGN with Stockfish 18 NNUE'
             git pull --rebase origin main
             git push origin HEAD:main
           fi
