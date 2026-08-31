@@ -17,6 +17,54 @@ def score_cp(score, turn):
     return pov.score(mate_score=100000)
 
 
+def evaluation_loss(best_score, played_score, mover, played_board=None):
+    """Return a training-oriented loss without treating mate scores as centipawns.
+
+    Mate scores are ordinal, not material values. Mapping M1/M0 to +/-100000 and
+    subtracting them can make a mating move look like a 200000-cp blunder. This
+    helper keeps ordinary centipawn loss for non-mating positions, while handling
+    forced mates explicitly.
+    """
+    # A legal move that ends the game by checkmate cannot be an error.
+    if played_board is not None and played_board.is_checkmate():
+        return 0
+
+    best_pov = best_score.pov(mover)
+    played_pov = played_score.pov(mover)
+    best_mate = best_pov.mate() if best_pov.is_mate() else None
+    played_mate = played_pov.mate() if played_pov.is_mate() else None
+
+    # If both lines preserve the same mate outcome, do not fabricate a huge CPL
+    # from mate distance. For training purposes, preserving a forced win (or an
+    # already forced loss) is not a centipawn error.
+    if best_mate is not None and played_mate is not None:
+        if best_mate > 0 and played_mate > 0:
+            return 0
+        if best_mate < 0 and played_mate < 0:
+            return 0
+
+    # Losing a forced mate, or allowing a forced mate that the best move avoids,
+    # is unequivocally a blunder. 1000 cp is enough to classify it without using
+    # artificial 100000/200000-cp arithmetic.
+    if best_mate is not None and best_mate > 0:
+        if played_mate is None or played_mate <= 0:
+            return 1000
+    if played_mate is not None and played_mate < 0:
+        if best_mate is None or best_mate >= 0:
+            return 1000
+
+    # Search noise can occasionally compare a forced-loss score with a non-mate
+    # score. Avoid turning that engine-boundary effect into a fake giant error.
+    if best_mate is not None or played_mate is not None:
+        return 0
+
+    best_cp = best_pov.score()
+    played_cp = played_pov.score()
+    if best_cp is None or played_cp is None:
+        return 0
+    return max(0, best_cp - played_cp)
+
+
 def fmt_eval(score, turn):
     pov = score.pov(turn)
     if pov.is_mate():
@@ -104,13 +152,14 @@ def main():
         for i, move in enumerate(moves):
             ply = i + 1
             pre = positions[i]
+            post = positions[i + 1]
             mover = pre.turn
 
             scan_before = scan[i]
             scan_after = scan[i + 1]
-            scan_best_cp = score_cp(scan_before["score"], mover)
-            scan_played_cp = score_cp(scan_after["score"], mover)
-            scan_loss = max(0, scan_best_cp - scan_played_cp)
+            scan_loss = evaluation_loss(
+                scan_before["score"], scan_after["score"], mover, post
+            )
 
             # Verify anything reasonably close to our first classification
             # threshold so subtle inaccuracies are less likely to be missed.
@@ -121,11 +170,9 @@ def main():
             if deep_verify:
                 verified_count += 1
                 before = analyse(engine, pre, args.depth, args.multipv)
-                after = first_info(analyse(engine, positions[i + 1], args.depth, 1))
+                after = first_info(analyse(engine, post, args.depth, 1))
                 best = before[0]
-                best_cp = score_cp(best["score"], mover)
-                played_cp = score_cp(after["score"], mover)
-                loss = max(0, best_cp - played_cp)
+                loss = evaluation_loss(best["score"], after["score"], mover, post)
                 best_eval = fmt_eval(best["score"], chess.WHITE)
                 played_eval = fmt_eval(after["score"], chess.WHITE)
                 analysis_depth = args.depth
@@ -141,8 +188,6 @@ def main():
             else:
                 best = scan_before
                 after = scan_after
-                best_cp = scan_best_cp
-                played_cp = scan_played_cp
                 loss = scan_loss
                 best_eval = fmt_eval(best["score"], chess.WHITE)
                 played_eval = fmt_eval(after["score"], chess.WHITE)
