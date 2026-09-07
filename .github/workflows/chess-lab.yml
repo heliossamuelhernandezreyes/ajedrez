@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'games/**/*.pgn'
+      - 'games/*.pgn'
       - 'analyze.py'
       - 'requirements.txt'
       - '.github/workflows/chess-lab.yml'
@@ -28,8 +29,8 @@ permissions:
 
 env:
   STOCKFISH_VERSION: '18'
-  STOCKFISH_ARCHIVE: 'stockfish-ubuntu-x86-64-avx2.tar'
-  STOCKFISH_SHA256: '536c0c2c0cf06450df0bfb5e876ef0d3119950703a8f143627f990c7b5417964'
+  STOCKFISH_ARCHIVE: stockfish-ubuntu-x86-64-avx2.tar
+  STOCKFISH_SHA256: 536c0c2c0cf06450df0bfb5e876ef0d3119950703a8f143627f990c7b5417964
 
 jobs:
   analyze:
@@ -89,9 +90,9 @@ jobs:
             HEAD="${{ github.sha }}"
 
             if [ -n "$BEFORE" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ]; then
-              PGN=$(git diff --name-only --diff-filter=AMR "$BEFORE" "$HEAD" -- 'games/**/*.pgn' | tail -n 1 || true)
+              PGN=$(git diff --name-only --diff-filter=AMR "$BEFORE" "$HEAD" | grep -E '^games/.*\.pgn$' | tail -n 1 || true)
             else
-              PGN=$(git diff-tree --root --no-commit-id --name-only -r "$HEAD" -- 'games/**/*.pgn' | tail -n 1 || true)
+              PGN=$(git diff-tree --root --no-commit-id --name-only -r "$HEAD" | grep -E '^games/.*\.pgn$' | tail -n 1 || true)
             fi
           fi
 
