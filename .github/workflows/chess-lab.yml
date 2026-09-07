@@ -74,22 +74,42 @@ jobs:
         id: select
         shell: bash
         run: |
+          set -euo pipefail
+
+          DEPTH=20
+          SCAN_DEPTH=14
+          PGN=""
+
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             PGN="${{ inputs.pgn }}"
             DEPTH="${{ inputs.depth }}"
             SCAN_DEPTH="${{ inputs.scan_depth }}"
           else
-            PGN=$(find games -name '*.pgn' -type f | sort | tail -n 1)
-            DEPTH=20
-            SCAN_DEPTH=14
+            BEFORE="${{ github.event.before }}"
+            HEAD="${{ github.sha }}"
+
+            if [ -n "$BEFORE" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ]; then
+              PGN=$(git diff --name-only --diff-filter=AMR "$BEFORE" "$HEAD" -- 'games/**/*.pgn' | tail -n 1 || true)
+            else
+              PGN=$(git diff-tree --root --no-commit-id --name-only -r "$HEAD" -- 'games/**/*.pgn' | tail -n 1 || true)
+            fi
           fi
-          test -n "$PGN"
-          test -f "$PGN"
+
+          if [ -n "$PGN" ]; then
+            test -f "$PGN"
+            echo "found=true" >> "$GITHUB_OUTPUT"
+            echo "Selected changed PGN: $PGN"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            echo "No PGN changed in this push; skipping engine analysis."
+          fi
+
           echo "pgn=$PGN" >> "$GITHUB_OUTPUT"
           echo "depth=$DEPTH" >> "$GITHUB_OUTPUT"
           echo "scan_depth=$SCAN_DEPTH" >> "$GITHUB_OUTPUT"
 
       - name: Analyze with Stockfish 18 NNUE
+        if: steps.select.outputs.found == 'true'
         run: |
           python analyze.py "${{ steps.select.outputs.pgn }}" \
             --scan-depth "${{ steps.select.outputs.scan_depth }}" \
@@ -100,6 +120,7 @@ jobs:
             --outdir analysis
 
       - name: Commit analysis
+        if: steps.select.outputs.found == 'true'
         run: |
           git config user.name 'chess-lab-bot'
           git config user.email 'chess-lab-bot@users.noreply.github.com'
