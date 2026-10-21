@@ -1,0 +1,982 @@
+{
+  "headers": {
+    "Event": "delmas3 vs Texcatlipocatl",
+    "Site": "Chess.com",
+    "Date": "2026-10-21",
+    "Round": "?",
+    "White": "delmas3",
+    "Black": "Texcatlipocatl",
+    "Result": "0-1",
+    "WhiteElo": "354",
+    "BlackElo": "358",
+    "TimeControl": "300"
+  },
+  "engine": "Stockfish 18 NNUE",
+  "analysis_mode": "two-pass",
+  "scan_depth": 14,
+  "depth": 20,
+  "multipv": 3,
+  "verify_threshold_cp": 40,
+  "deep_verified_moves": 10,
+  "summary": {
+    "blunder": 3,
+    "mistake": 1,
+    "inaccuracy": 2
+  },
+  "moves": [
+    {
+      "ply": 1,
+      "move_number": 1,
+      "side": "White",
+      "played": "d4",
+      "best": "e4",
+      "eval_before_white": "+0.46",
+      "eval_after_white": "+0.31",
+      "centipawn_loss": 15,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "e4",
+          "eval_white": "+0.46"
+        }
+      ]
+    },
+    {
+      "ply": 2,
+      "move_number": 1,
+      "side": "Black",
+      "played": "d6",
+      "best": "Nf6",
+      "eval_before_white": "+0.31",
+      "eval_after_white": "+0.59",
+      "centipawn_loss": 28,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Nf6",
+          "eval_white": "+0.31"
+        }
+      ]
+    },
+    {
+      "ply": 3,
+      "move_number": 2,
+      "side": "White",
+      "played": "e3",
+      "best": "e4",
+      "eval_before_white": "+0.59",
+      "eval_after_white": "+0.27",
+      "centipawn_loss": 32,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "e4",
+          "eval_white": "+0.59"
+        }
+      ]
+    },
+    {
+      "ply": 4,
+      "move_number": 2,
+      "side": "Black",
+      "played": "e6",
+      "best": "Nd7",
+      "eval_before_white": "+0.27",
+      "eval_after_white": "+0.43",
+      "centipawn_loss": 16,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Nd7",
+          "eval_white": "+0.27"
+        }
+      ]
+    },
+    {
+      "ply": 5,
+      "move_number": 3,
+      "side": "White",
+      "played": "Be2",
+      "best": "Nf3",
+      "eval_before_white": "+0.43",
+      "eval_after_white": "+0.37",
+      "centipawn_loss": 6,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Nf3",
+          "eval_white": "+0.43"
+        }
+      ]
+    },
+    {
+      "ply": 6,
+      "move_number": 3,
+      "side": "Black",
+      "played": "Nf6",
+      "best": "Nf6",
+      "eval_before_white": "+0.37",
+      "eval_after_white": "+0.37",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Nf6",
+          "eval_white": "+0.37"
+        }
+      ]
+    },
+    {
+      "ply": 7,
+      "move_number": 4,
+      "side": "White",
+      "played": "Nf3",
+      "best": "c4",
+      "eval_before_white": "+0.37",
+      "eval_after_white": "+0.37",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "c4",
+          "eval_white": "+0.37"
+        }
+      ]
+    },
+    {
+      "ply": 8,
+      "move_number": 4,
+      "side": "Black",
+      "played": "g6",
+      "best": "Be7",
+      "eval_before_white": "+0.37",
+      "eval_after_white": "+0.47",
+      "centipawn_loss": 10,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Be7",
+          "eval_white": "+0.37"
+        }
+      ]
+    },
+    {
+      "ply": 9,
+      "move_number": 5,
+      "side": "White",
+      "played": "O-O",
+      "best": "c4",
+      "eval_before_white": "+0.47",
+      "eval_after_white": "+0.45",
+      "centipawn_loss": 2,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "c4",
+          "eval_white": "+0.47"
+        }
+      ]
+    },
+    {
+      "ply": 10,
+      "move_number": 5,
+      "side": "Black",
+      "played": "Bg7",
+      "best": "Bg7",
+      "eval_before_white": "+0.45",
+      "eval_after_white": "+0.44",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Bg7",
+          "eval_white": "+0.45"
+        }
+      ]
+    },
+    {
+      "ply": 11,
+      "move_number": 6,
+      "side": "White",
+      "played": "Bb5+",
+      "best": "c4",
+      "eval_before_white": "+0.44",
+      "eval_after_white": "+0.09",
+      "centipawn_loss": 35,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "c4",
+          "eval_white": "+0.44"
+        }
+      ]
+    },
+    {
+      "ply": 12,
+      "move_number": 6,
+      "side": "Black",
+      "played": "Nc6",
+      "best": "Nbd7",
+      "eval_before_white": "+0.09",
+      "eval_after_white": "+0.24",
+      "centipawn_loss": 15,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Nbd7",
+          "eval_white": "+0.09"
+        }
+      ]
+    },
+    {
+      "ply": 13,
+      "move_number": 7,
+      "side": "White",
+      "played": "Na3",
+      "best": "Re1",
+      "eval_before_white": "+0.25",
+      "eval_after_white": "-0.42",
+      "centipawn_loss": 67,
+      "classification": "ok",
+      "analysis_depth": 20,
+      "deep_verified": true,
+      "alternatives": [
+        {
+          "move": "Re1",
+          "eval_white": "+0.25"
+        },
+        {
+          "move": "Nc3",
+          "eval_white": "+0.24"
+        },
+        {
+          "move": "Nbd2",
+          "eval_white": "+0.18"
+        }
+      ]
+    },
+    {
+      "ply": 14,
+      "move_number": 7,
+      "side": "Black",
+      "played": "a6",
+      "best": "O-O",
+      "eval_before_white": "-0.37",
+      "eval_after_white": "-0.22",
+      "centipawn_loss": 15,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "O-O",
+          "eval_white": "-0.37"
+        }
+      ]
+    },
+    {
+      "ply": 15,
+      "move_number": 8,
+      "side": "White",
+      "played": "Bd3",
+      "best": "Bxc6+",
+      "eval_before_white": "-0.22",
+      "eval_after_white": "-0.21",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Bxc6+",
+          "eval_white": "-0.22"
+        }
+      ]
+    },
+    {
+      "ply": 16,
+      "move_number": 8,
+      "side": "Black",
+      "played": "O-O",
+      "best": "Nb4",
+      "eval_before_white": "-0.21",
+      "eval_after_white": "-0.19",
+      "centipawn_loss": 2,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Nb4",
+          "eval_white": "-0.21"
+        }
+      ]
+    },
+    {
+      "ply": 17,
+      "move_number": 9,
+      "side": "White",
+      "played": "c3",
+      "best": "e4",
+      "eval_before_white": "-0.19",
+      "eval_after_white": "-0.46",
+      "centipawn_loss": 27,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "e4",
+          "eval_white": "-0.19"
+        }
+      ]
+    },
+    {
+      "ply": 18,
+      "move_number": 9,
+      "side": "Black",
+      "played": "e5",
+      "best": "d5",
+      "eval_before_white": "-0.46",
+      "eval_after_white": "-0.31",
+      "centipawn_loss": 15,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "d5",
+          "eval_white": "-0.46"
+        }
+      ]
+    },
+    {
+      "ply": 19,
+      "move_number": 10,
+      "side": "White",
+      "played": "b4",
+      "best": "dxe5",
+      "eval_before_white": "-0.23",
+      "eval_after_white": "-4.06",
+      "centipawn_loss": 383,
+      "classification": "blunder",
+      "analysis_depth": 20,
+      "deep_verified": true,
+      "alternatives": [
+        {
+          "move": "dxe5",
+          "eval_white": "-0.23"
+        },
+        {
+          "move": "e4",
+          "eval_white": "-0.62"
+        },
+        {
+          "move": "Qc2",
+          "eval_white": "-0.72"
+        }
+      ]
+    },
+    {
+      "ply": 20,
+      "move_number": 10,
+      "side": "Black",
+      "played": "e4",
+      "best": "e4",
+      "eval_before_white": "-4.48",
+      "eval_after_white": "-4.44",
+      "centipawn_loss": 4,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "e4",
+          "eval_white": "-4.48"
+        }
+      ]
+    },
+    {
+      "ply": 21,
+      "move_number": 11,
+      "side": "White",
+      "played": "Bxe4",
+      "best": "Bc2",
+      "eval_before_white": "-4.44",
+      "eval_after_white": "-4.81",
+      "centipawn_loss": 37,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Bc2",
+          "eval_white": "-4.44"
+        }
+      ]
+    },
+    {
+      "ply": 22,
+      "move_number": 11,
+      "side": "Black",
+      "played": "Nxe4",
+      "best": "Nxe4",
+      "eval_before_white": "-4.81",
+      "eval_after_white": "-4.97",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Nxe4",
+          "eval_white": "-4.81"
+        }
+      ]
+    },
+    {
+      "ply": 23,
+      "move_number": 12,
+      "side": "White",
+      "played": "Qd3",
+      "best": "Qb3",
+      "eval_before_white": "-4.97",
+      "eval_after_white": "-5.06",
+      "centipawn_loss": 9,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Qb3",
+          "eval_white": "-4.97"
+        }
+      ]
+    },
+    {
+      "ply": 24,
+      "move_number": 12,
+      "side": "Black",
+      "played": "Bf5",
+      "best": "d5",
+      "eval_before_white": "-5.06",
+      "eval_after_white": "-5.17",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "d5",
+          "eval_white": "-5.06"
+        }
+      ]
+    },
+    {
+      "ply": 25,
+      "move_number": 13,
+      "side": "White",
+      "played": "Nc4",
+      "best": "Qc4",
+      "eval_before_white": "-4.96",
+      "eval_after_white": "-5.38",
+      "centipawn_loss": 42,
+      "classification": "ok",
+      "analysis_depth": 20,
+      "deep_verified": true,
+      "alternatives": [
+        {
+          "move": "Qc4",
+          "eval_white": "-4.96"
+        },
+        {
+          "move": "Nd2",
+          "eval_white": "-5.09"
+        },
+        {
+          "move": "Qc2",
+          "eval_white": "-5.23"
+        }
+      ]
+    },
+    {
+      "ply": 26,
+      "move_number": 13,
+      "side": "Black",
+      "played": "Ng5",
+      "best": "Ng3",
+      "eval_before_white": "-5.21",
+      "eval_after_white": "-4.75",
+      "centipawn_loss": 46,
+      "classification": "ok",
+      "analysis_depth": 20,
+      "deep_verified": true,
+      "alternatives": [
+        {
+          "move": "Ng3",
+          "eval_white": "-5.21"
+        },
+        {
+          "move": "Re8",
+          "eval_white": "-5.21"
+        },
+        {
+          "move": "d5",
+          "eval_white": "-5.15"
+        }
+      ]
+    },
+    {
+      "ply": 27,
+      "move_number": 14,
+      "side": "White",
+      "played": "Nxg5",
+      "best": "Qd1",
+      "eval_before_white": "-4.66",
+      "eval_after_white": "-7.84",
+      "centipawn_loss": 318,
+      "classification": "blunder",
+      "analysis_depth": 20,
+      "deep_verified": true,
+      "alternatives": [
+        {
+          "move": "Qd1",
+          "eval_white": "-4.66"
+        },
+        {
+          "move": "Qe2",
+          "eval_white": "-4.72"
+        },
+        {
+          "move": "e4",
+          "eval_white": "-5.43"
+        }
+      ]
+    },
+    {
+      "ply": 28,
+      "move_number": 14,
+      "side": "Black",
+      "played": "Bxd3",
+      "best": "Bxd3",
+      "eval_before_white": "-7.86",
+      "eval_after_white": "-7.89",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Bxd3",
+          "eval_white": "-7.86"
+        }
+      ]
+    },
+    {
+      "ply": 29,
+      "move_number": 15,
+      "side": "White",
+      "played": "Rd1",
+      "best": "Nxh7",
+      "eval_before_white": "-7.85",
+      "eval_after_white": "-8.27",
+      "centipawn_loss": 42,
+      "classification": "ok",
+      "analysis_depth": 20,
+      "deep_verified": true,
+      "alternatives": [
+        {
+          "move": "Nxh7",
+          "eval_white": "-7.85"
+        },
+        {
+          "move": "e4",
+          "eval_white": "-8.00"
+        },
+        {
+          "move": "f4",
+          "eval_white": "-8.07"
+        }
+      ]
+    },
+    {
+      "ply": 30,
+      "move_number": 15,
+      "side": "Black",
+      "played": "Qxg5",
+      "best": "Bxc4",
+      "eval_before_white": "-8.08",
+      "eval_after_white": "-7.09",
+      "centipawn_loss": 99,
+      "classification": "inaccuracy",
+      "analysis_depth": 20,
+      "deep_verified": true,
+      "alternatives": [
+        {
+          "move": "Bxc4",
+          "eval_white": "-8.08"
+        },
+        {
+          "move": "Be2",
+          "eval_white": "-7.96"
+        },
+        {
+          "move": "Bc2",
+          "eval_white": "-7.55"
+        }
+      ]
+    },
+    {
+      "ply": 31,
+      "move_number": 16,
+      "side": "White",
+      "played": "Nb2",
+      "best": "Rxd3",
+      "eval_before_white": "-7.12",
+      "eval_after_white": "-9.16",
+      "centipawn_loss": 204,
+      "classification": "mistake",
+      "analysis_depth": 20,
+      "deep_verified": true,
+      "alternatives": [
+        {
+          "move": "Rxd3",
+          "eval_white": "-7.12"
+        },
+        {
+          "move": "h4",
+          "eval_white": "-8.25"
+        },
+        {
+          "move": "e4",
+          "eval_white": "-8.31"
+        }
+      ]
+    },
+    {
+      "ply": 32,
+      "move_number": 16,
+      "side": "Black",
+      "played": "Be4",
+      "best": "Be4",
+      "eval_before_white": "-8.88",
+      "eval_after_white": "-8.75",
+      "centipawn_loss": 13,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Be4",
+          "eval_white": "-8.88"
+        }
+      ]
+    },
+    {
+      "ply": 33,
+      "move_number": 17,
+      "side": "White",
+      "played": "f3",
+      "best": "f3",
+      "eval_before_white": "-8.75",
+      "eval_after_white": "-8.68",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "f3",
+          "eval_white": "-8.75"
+        }
+      ]
+    },
+    {
+      "ply": 34,
+      "move_number": 17,
+      "side": "Black",
+      "played": "Bxf3",
+      "best": "Bxf3",
+      "eval_before_white": "-8.68",
+      "eval_after_white": "-8.68",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Bxf3",
+          "eval_white": "-8.68"
+        }
+      ]
+    },
+    {
+      "ply": 35,
+      "move_number": 18,
+      "side": "White",
+      "played": "g3",
+      "best": "Rd2",
+      "eval_before_white": "-8.68",
+      "eval_after_white": "-9.04",
+      "centipawn_loss": 36,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Rd2",
+          "eval_white": "-8.68"
+        }
+      ]
+    },
+    {
+      "ply": 36,
+      "move_number": 18,
+      "side": "Black",
+      "played": "Bxd1",
+      "best": "Kh8",
+      "eval_before_white": "-9.04",
+      "eval_after_white": "-9.17",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Kh8",
+          "eval_white": "-9.04"
+        }
+      ]
+    },
+    {
+      "ply": 37,
+      "move_number": 19,
+      "side": "White",
+      "played": "Nxd1",
+      "best": "Nxd1",
+      "eval_before_white": "-9.17",
+      "eval_after_white": "-9.07",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Nxd1",
+          "eval_white": "-9.17"
+        }
+      ]
+    },
+    {
+      "ply": 38,
+      "move_number": 19,
+      "side": "Black",
+      "played": "Qg4",
+      "best": "Qh5",
+      "eval_before_white": "-9.07",
+      "eval_after_white": "-9.07",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Qh5",
+          "eval_white": "-9.07"
+        }
+      ]
+    },
+    {
+      "ply": 39,
+      "move_number": 20,
+      "side": "White",
+      "played": "Nf2",
+      "best": "Nf2",
+      "eval_before_white": "-9.07",
+      "eval_after_white": "-9.07",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Nf2",
+          "eval_white": "-9.07"
+        }
+      ]
+    },
+    {
+      "ply": 40,
+      "move_number": 20,
+      "side": "Black",
+      "played": "Qf3",
+      "best": "Qd7",
+      "eval_before_white": "-9.07",
+      "eval_after_white": "-8.72",
+      "centipawn_loss": 35,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Qd7",
+          "eval_white": "-9.07"
+        }
+      ]
+    },
+    {
+      "ply": 41,
+      "move_number": 21,
+      "side": "White",
+      "played": "d5",
+      "best": "Bd2",
+      "eval_before_white": "-9.04",
+      "eval_after_white": "-10.04",
+      "centipawn_loss": 100,
+      "classification": "inaccuracy",
+      "analysis_depth": 20,
+      "deep_verified": true,
+      "alternatives": [
+        {
+          "move": "Bd2",
+          "eval_white": "-9.04"
+        },
+        {
+          "move": "a4",
+          "eval_white": "-9.20"
+        },
+        {
+          "move": "Rb1",
+          "eval_white": "-9.26"
+        }
+      ]
+    },
+    {
+      "ply": 42,
+      "move_number": 21,
+      "side": "Black",
+      "played": "Ne5",
+      "best": "Ne5",
+      "eval_before_white": "-9.45",
+      "eval_after_white": "-9.43",
+      "centipawn_loss": 2,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Ne5",
+          "eval_white": "-9.45"
+        }
+      ]
+    },
+    {
+      "ply": 43,
+      "move_number": 22,
+      "side": "White",
+      "played": "e4",
+      "best": "e4",
+      "eval_before_white": "-9.43",
+      "eval_after_white": "-9.21",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "e4",
+          "eval_white": "-9.43"
+        }
+      ]
+    },
+    {
+      "ply": 44,
+      "move_number": 22,
+      "side": "Black",
+      "played": "Nd3",
+      "best": "Kh8",
+      "eval_before_white": "-9.21",
+      "eval_after_white": "-8.88",
+      "centipawn_loss": 33,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Kh8",
+          "eval_white": "-9.21"
+        }
+      ]
+    },
+    {
+      "ply": 45,
+      "move_number": 23,
+      "side": "White",
+      "played": "Bd2",
+      "best": "Nxd3",
+      "eval_before_white": "-11.35",
+      "eval_after_white": "M-7",
+      "centipawn_loss": 1000,
+      "classification": "blunder",
+      "analysis_depth": 20,
+      "deep_verified": true,
+      "alternatives": [
+        {
+          "move": "Nxd3",
+          "eval_white": "-11.35"
+        },
+        {
+          "move": "Ng4",
+          "eval_white": "-14.09"
+        },
+        {
+          "move": "Be3",
+          "eval_white": "-14.94"
+        }
+      ]
+    },
+    {
+      "ply": 46,
+      "move_number": 23,
+      "side": "Black",
+      "played": "Qxf2+",
+      "best": "Qxf2+",
+      "eval_before_white": "-11.66",
+      "eval_after_white": "-12.33",
+      "centipawn_loss": 0,
+      "classification": "ok",
+      "analysis_depth": 14,
+      "deep_verified": false,
+      "alternatives": [
+        {
+          "move": "Qxf2+",
+          "eval_white": "-11.66"
+        }
+      ]
+    }
+  ]
+}
