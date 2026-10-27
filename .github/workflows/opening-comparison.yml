@@ -1,0 +1,87 @@
+name: Opening repertoire comparison — Stockfish 18
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/opening-comparison.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install python-chess==1.999
+      - name: Install verified Stockfish 18
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 https://github.com/official-stockfish/Stockfish/releases/download/sf_18/stockfish-ubuntu-x86-64-avx2.tar -o /tmp/stockfish.tar
+          echo '536c0c2c0cf06450df0bfb5e876ef0d3119950703a8f143627f990c7b5417964  /tmp/stockfish.tar' | sha256sum -c -
+          mkdir /tmp/sf
+          tar -xf /tmp/stockfish.tar -C /tmp/sf
+          echo "STOCKFISH_PATH=$(find /tmp/sf -type f -name 'stockfish*' | head -1)" >> "$GITHUB_ENV"
+      - name: Run controlled opening comparison
+        shell: bash
+        run: |
+          cat > /tmp/compare.py <<'PY'
+          import chess, chess.engine, json, pathlib, statistics
+          engine=chess.engine.SimpleEngine.popen_uci(__import__('os').environ['STOCKFISH_PATH'])
+          engine.configure({'Threads':2,'Hash':256})
+          starts=[('King pawn','e4'),('Queen pawn','d4'),('English','c4'),('Reti','Nf3'),('Bird','f4'),('Larsen','b3'),('Nimzo-Larsen','Nc3'),('King fianchetto','g3'),('Sokolsky','b4'),('Van Geet flank','a3'),('King-side pawn','h3'),('Grob','g4')]
+          plans={
+            'Your hybrid':['d6','e6','Nf6','g6','Bg7','O-O'],
+            'Pirc-like':['d6','Nf6','g6','Bg7','O-O','e5'],
+            'French-like':['e6','d5','Nf6','Be7','O-O','c5'],
+            'Caro-like':['c6','d5','Bf5','e6','Nf6','Be7']}
+          depth=16
+          def score(board):
+            info=engine.analyse(board,chess.engine.Limit(depth=depth))
+            return round(info['score'].pov(chess.WHITE).score(mate_score=10000)/100,2)
+          def best(board):
+            return engine.play(board,chess.engine.Limit(depth=depth)).move
+          rows=[]
+          for name,first in starts:
+            for plan,script in plans.items():
+              b=chess.Board();b.push_san(first)
+              moves=[first];script_used=[];fallback=[]
+              for k in range(3):
+                wanted=script[k]
+                try:
+                  move=b.parse_san(wanted)
+                  script_used.append(True)
+                except ValueError:
+                  move=best(b);script_used.append(False);fallback.append(wanted)
+                moves.append(b.san(move));b.push(move)
+                wm=best(b);moves.append(b.san(wm));b.push(wm)
+              ev=score(b)
+              rows.append(dict(white=name,first=first,defense=plan,eval_white=ev,plies=7,moves=' '.join(moves),script_legal=script_used,script_fallback=fallback))
+          engine.quit()
+          out=pathlib.Path('analysis/opening-comparison');out.mkdir(parents=True,exist_ok=True)
+          (out/'results.json').write_text(json.dumps({'engine':'Stockfish 18 NNUE','depth':depth,'method':'12 first moves x 4 black scripted schemes, Stockfish white replies, illegal script moves replaced by Stockfish black move; eval after 3 black and 3 white replies; indicative only, not minimax opening ranking','rows':rows},indent=2),encoding='utf-8')
+          md=['# Stockfish 18: exploratory opening comparison','','Depth 16. Positive = White advantage. Black moves are scripted by repertoire; White replies are Stockfish choices. If scripted move is illegal, Black uses Stockfish best. **Not an optimized repertoire tournament**.','','| White start | Hybrid | Pirc-like | French-like | Caro-like |','|---|---:|---:|---:|---:|']
+          for name,_ in starts:
+            subset={r['defense']:r for r in rows if r['white']==name}
+            md.append('| '+name+' | '+' | '.join(str(subset[p]['eval_white']) for p in plans)+' |')
+          md+=['','## Complete tested continuations','','| White | Black repertoire | Moves (SAN tokens, alternating from White) | White eval | Script substitutions |','|---|---|---|---:|---|']
+          for r in rows:
+            md.append('| '+r['white']+' | '+r['defense']+' | '+r['moves']+' | '+str(r['eval_white'])+' | '+(', '.join(r['script_fallback']) or 'none')+' |')
+          (out/'report.md').write_text('\n'.join(md)+'\n',encoding='utf-8')
+          print('Completed',len(rows),'tests')
+          PY
+          python /tmp/compare.py
+      - name: Commit results
+        run: |
+          git config user.name 'chess-lab-bot'
+          git config user.email 'chess-lab-bot@users.noreply.github.com'
+          git add analysis/opening-comparison
+          git commit -m 'Stockfish 18 opening comparison results'
+          git pull --rebase origin main
+          git push origin HEAD:main
