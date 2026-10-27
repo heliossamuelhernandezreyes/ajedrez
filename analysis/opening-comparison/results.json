@@ -1,0 +1,679 @@
+{
+  "engine": "Stockfish 18 NNUE",
+  "depth": 16,
+  "method": "12 first moves x 4 black scripted schemes, Stockfish white replies, illegal script moves replaced by Stockfish black move; eval after 3 black and 3 white replies; indicative only, not minimax opening ranking",
+  "rows": [
+    {
+      "white": "King pawn",
+      "first": "e4",
+      "defense": "Your hybrid",
+      "eval_white": 0.77,
+      "plies": 7,
+      "moves": "e4 d6 d4 e6 Nf3 Nf6 Bd3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "King pawn",
+      "first": "e4",
+      "defense": "Pirc-like",
+      "eval_white": 0.75,
+      "plies": 7,
+      "moves": "e4 d6 d4 Nf6 Nc3 g6 Bf4",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "King pawn",
+      "first": "e4",
+      "defense": "French-like",
+      "eval_white": 0.49,
+      "plies": 7,
+      "moves": "e4 e6 d4 d5 Nc3 Nf6 e5",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "King pawn",
+      "first": "e4",
+      "defense": "Caro-like",
+      "eval_white": 0.38,
+      "plies": 7,
+      "moves": "e4 c6 d4 d5 e5 Bf5 h4",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Queen pawn",
+      "first": "d4",
+      "defense": "Your hybrid",
+      "eval_white": 0.86,
+      "plies": 7,
+      "moves": "d4 d6 e4 e6 Nf3 Nf6 Bd3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Queen pawn",
+      "first": "d4",
+      "defense": "Pirc-like",
+      "eval_white": 0.53,
+      "plies": 7,
+      "moves": "d4 d6 Nf3 Nf6 c4 g6 Nc3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Queen pawn",
+      "first": "d4",
+      "defense": "French-like",
+      "eval_white": 0.48,
+      "plies": 7,
+      "moves": "d4 e6 e4 d5 Nc3 Nf6 e5",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Queen pawn",
+      "first": "d4",
+      "defense": "Caro-like",
+      "eval_white": 0.98,
+      "plies": 7,
+      "moves": "d4 c6 Nf3 d5 c4 Bf5 cxd5",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "English",
+      "first": "c4",
+      "defense": "Your hybrid",
+      "eval_white": 0.92,
+      "plies": 7,
+      "moves": "c4 d6 Nc3 e6 d4 Nf6 e4",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "English",
+      "first": "c4",
+      "defense": "Pirc-like",
+      "eval_white": 0.65,
+      "plies": 7,
+      "moves": "c4 d6 Nc3 Nf6 d4 g6 e4",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "English",
+      "first": "c4",
+      "defense": "French-like",
+      "eval_white": 0.23,
+      "plies": 7,
+      "moves": "c4 e6 d4 d5 Nc3 Nf6 cxd5",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "English",
+      "first": "c4",
+      "defense": "Caro-like",
+      "eval_white": 0.94,
+      "plies": 7,
+      "moves": "c4 c6 Nf3 d5 d4 Bf5 cxd5",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Reti",
+      "first": "Nf3",
+      "defense": "Your hybrid",
+      "eval_white": 0.94,
+      "plies": 7,
+      "moves": "Nf3 d6 e4 e6 d4 Nf6 Bd3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Reti",
+      "first": "Nf3",
+      "defense": "Pirc-like",
+      "eval_white": 0.64,
+      "plies": 7,
+      "moves": "Nf3 d6 d4 Nf6 c4 g6 Nc3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Reti",
+      "first": "Nf3",
+      "defense": "French-like",
+      "eval_white": 0.11,
+      "plies": 7,
+      "moves": "Nf3 e6 c4 d5 d4 Nf6 Bg5",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Reti",
+      "first": "Nf3",
+      "defense": "Caro-like",
+      "eval_white": 4.51,
+      "plies": 7,
+      "moves": "Nf3 c6 Nc3 d5 e4 Bf5 exf5",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Bird",
+      "first": "f4",
+      "defense": "Your hybrid",
+      "eval_white": 0.72,
+      "plies": 7,
+      "moves": "f4 d6 e4 e6 d4 Nf6 Nc3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Bird",
+      "first": "f4",
+      "defense": "Pirc-like",
+      "eval_white": 0.66,
+      "plies": 7,
+      "moves": "f4 d6 e4 Nf6 Nc3 g6 d4",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Bird",
+      "first": "f4",
+      "defense": "French-like",
+      "eval_white": 0.27,
+      "plies": 7,
+      "moves": "f4 e6 e4 d5 d3 Nf6 e5",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Bird",
+      "first": "f4",
+      "defense": "Caro-like",
+      "eval_white": 3.78,
+      "plies": 7,
+      "moves": "f4 c6 e4 d5 d3 Bf5 exf5",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Larsen",
+      "first": "b3",
+      "defense": "Your hybrid",
+      "eval_white": 0.46,
+      "plies": 7,
+      "moves": "b3 d6 Bb2 e6 g3 Nf6 Bg2",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Larsen",
+      "first": "b3",
+      "defense": "Pirc-like",
+      "eval_white": 0.15,
+      "plies": 7,
+      "moves": "b3 d6 Bb2 Nf6 d4 g6 Nf3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Larsen",
+      "first": "b3",
+      "defense": "French-like",
+      "eval_white": 0.04,
+      "plies": 7,
+      "moves": "b3 e6 g3 d5 Nf3 Nf6 Bg2",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Larsen",
+      "first": "b3",
+      "defense": "Caro-like",
+      "eval_white": 0.32,
+      "plies": 7,
+      "moves": "b3 c6 Bb2 d5 e3 Bf5 g4",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Nimzo-Larsen",
+      "first": "Nc3",
+      "defense": "Your hybrid",
+      "eval_white": 0.76,
+      "plies": 7,
+      "moves": "Nc3 d6 d4 e6 e4 Nf6 Nf3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Nimzo-Larsen",
+      "first": "Nc3",
+      "defense": "Pirc-like",
+      "eval_white": 0.8,
+      "plies": 7,
+      "moves": "Nc3 d6 d4 Nf6 e4 g6 Be3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Nimzo-Larsen",
+      "first": "Nc3",
+      "defense": "French-like",
+      "eval_white": 0.42,
+      "plies": 7,
+      "moves": "Nc3 e6 e4 d5 d4 Nf6 e5",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Nimzo-Larsen",
+      "first": "Nc3",
+      "defense": "Caro-like",
+      "eval_white": 4.37,
+      "plies": 7,
+      "moves": "Nc3 c6 Nf3 d5 e4 Bf5 exf5",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "King fianchetto",
+      "first": "g3",
+      "defense": "Your hybrid",
+      "eval_white": 0.69,
+      "plies": 7,
+      "moves": "g3 d6 d4 e6 c4 Nf6 Nf3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "King fianchetto",
+      "first": "g3",
+      "defense": "Pirc-like",
+      "eval_white": 0.5,
+      "plies": 7,
+      "moves": "g3 d6 Nf3 Nf6 Bg2 g6 c4",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "King fianchetto",
+      "first": "g3",
+      "defense": "French-like",
+      "eval_white": 0.37,
+      "plies": 7,
+      "moves": "g3 e6 Bg2 d5 Nf3 Nf6 d4",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "King fianchetto",
+      "first": "g3",
+      "defense": "Caro-like",
+      "eval_white": -0.08,
+      "plies": 7,
+      "moves": "g3 c6 Bg2 d5 d4 Bf5 c4",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Sokolsky",
+      "first": "b4",
+      "defense": "Your hybrid",
+      "eval_white": 0.16,
+      "plies": 7,
+      "moves": "b4 d6 c4 e6 Nf3 Nf6 e3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Sokolsky",
+      "first": "b4",
+      "defense": "Pirc-like",
+      "eval_white": 0.25,
+      "plies": 7,
+      "moves": "b4 d6 c4 Nf6 Bb2 g6 g3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Sokolsky",
+      "first": "b4",
+      "defense": "French-like",
+      "eval_white": -0.18,
+      "plies": 7,
+      "moves": "b4 e6 a3 d5 e3 Nf6 Nf3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Sokolsky",
+      "first": "b4",
+      "defense": "Caro-like",
+      "eval_white": 0.0,
+      "plies": 7,
+      "moves": "b4 c6 e3 d5 Bb2 Bf5 a3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Van Geet flank",
+      "first": "a3",
+      "defense": "Your hybrid",
+      "eval_white": 0.66,
+      "plies": 7,
+      "moves": "a3 d6 d4 e6 e4 Nf6 Nc3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Van Geet flank",
+      "first": "a3",
+      "defense": "Pirc-like",
+      "eval_white": 0.31,
+      "plies": 7,
+      "moves": "a3 d6 d4 Nf6 Nf3 g6 Nc3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Van Geet flank",
+      "first": "a3",
+      "defense": "French-like",
+      "eval_white": 0.06,
+      "plies": 7,
+      "moves": "a3 e6 Nf3 d5 d4 Nf6 c4",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Van Geet flank",
+      "first": "a3",
+      "defense": "Caro-like",
+      "eval_white": 0.22,
+      "plies": 7,
+      "moves": "a3 c6 d4 d5 Nf3 Bf5 Bf4",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "King-side pawn",
+      "first": "h3",
+      "defense": "Your hybrid",
+      "eval_white": 0.39,
+      "plies": 7,
+      "moves": "h3 d6 d4 e6 c4 Nf6 Nc3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "King-side pawn",
+      "first": "h3",
+      "defense": "Pirc-like",
+      "eval_white": 0.49,
+      "plies": 7,
+      "moves": "h3 d6 Nf3 Nf6 d4 g6 c4",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "King-side pawn",
+      "first": "h3",
+      "defense": "French-like",
+      "eval_white": 1.0,
+      "plies": 7,
+      "moves": "h3 e6 e4 d5 exd5 Nf6 dxe6",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "King-side pawn",
+      "first": "h3",
+      "defense": "Caro-like",
+      "eval_white": 0.92,
+      "plies": 7,
+      "moves": "h3 c6 e4 d5 exd5 Bf5 dxc6",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Grob",
+      "first": "g4",
+      "defense": "Your hybrid",
+      "eval_white": 0.2,
+      "plies": 7,
+      "moves": "g4 d6 h3 e6 Nf3 Nf6 Bg2",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Grob",
+      "first": "g4",
+      "defense": "Pirc-like",
+      "eval_white": 0.13,
+      "plies": 7,
+      "moves": "g4 d6 h3 Nf6 d4 g6 Bg2",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Grob",
+      "first": "g4",
+      "defense": "French-like",
+      "eval_white": -0.66,
+      "plies": 7,
+      "moves": "g4 e6 d4 d5 Bf4 Nf6 e3",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    },
+    {
+      "white": "Grob",
+      "first": "g4",
+      "defense": "Caro-like",
+      "eval_white": 4.05,
+      "plies": 7,
+      "moves": "g4 c6 d4 d5 h3 Bf5 gxf5",
+      "script_legal": [
+        true,
+        true,
+        true
+      ],
+      "script_fallback": []
+    }
+  ]
+}
